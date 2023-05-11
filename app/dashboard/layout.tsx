@@ -1,10 +1,11 @@
 import DashboardNavbar from "./DashboardNavbar";
+import { RecordProvider } from "./RecordContext";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       <DashboardNavbar />
-      {children}
+      <RecordProvider>{children}</RecordProvider>
     </div>
   );
 };

@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { record } from "../page";
+import { useContext, useState } from "react";
+import { ListContext } from "../RecordContext";
 
 export default function EmployeeForm() {
+  const { addItem } = useContext(ListContext);
+
   const [email, setEmail] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
@@ -13,7 +15,7 @@ export default function EmployeeForm() {
   const [address, setAddress] = useState("");
 
   const formSubmitHandler = () => {
-    record.push({
+    addItem({
       name: fname + " " + lname,
       email: email + "@folio3.com",
       designation,
@@ -21,9 +23,10 @@ export default function EmployeeForm() {
       city,
       address,
     });
+    formClearHandler();
   };
 
-  const formCancelHandler = () => {
+  const formClearHandler = () => {
     setFname("");
     setLname("");
     setCity("");
@@ -210,7 +213,7 @@ export default function EmployeeForm() {
 
       <div className="mt-6 flex items-center justify-end gap-x-6">
         <button
-          onClick={formCancelHandler}
+          onClick={formClearHandler}
           type="button"
           className="text-sm font-semibold leading-6 text-white-900"
         >

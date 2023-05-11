@@ -1,77 +1,24 @@
+"use client";
+
 import { NextPage } from "next";
 import Table from "./Table";
+import { useContext } from "react";
+import { ListContext } from "./RecordContext";
 
 interface Props {}
-
-export let record = [
-  {
-    name: "Muhammad Yasir",
-    email: "muhammadyasir@folio3.com",
-    designation: "Trainee Software Engineer",
-    country: "Pakistan",
-    city: "Lahore",
-    address: "Earth",
-  },
-  {
-    name: "Muhammad Yasir",
-    email: "muhammadyasir@folio3.com",
-    designation: "Trainee Software Engineer",
-    country: "Pakistan",
-    city: "Lahore",
-    address: "Earth",
-  },
-  {
-    name: "Muhammad Yasir",
-    email: "muhammadyasir@folio3.com",
-    designation: "Trainee Software Engineer",
-    country: "Pakistan",
-    city: "Lahore",
-    address: "Earth",
-  },
-  {
-    name: "Muhammad Yasir",
-    email: "muhammadyasir@folio3.com",
-    designation: "Trainee Software Engineer",
-    country: "Pakistan",
-    city: "Lahore",
-    address: "Earth",
-  },
-  {
-    name: "Muhammad Yasir",
-    email: "muhammadyasir@folio3.com",
-    designation: "Trainee Software Engineer",
-    country: "Pakistan",
-    city: "Lahore",
-    address: "Earth",
-  },
-  {
-    name: "Muhammad Yasir",
-    email: "muhammadyasir@folio3.com",
-    designation: "Trainee Software Engineer",
-    country: "Pakistan",
-    city: "Lahore",
-    address: "Earth",
-  },
-  {
-    name: "Muhammad Yasir",
-    email: "muhammadyasir@folio3.com",
-    designation: "Trainee Software Engineer",
-    country: "Pakistan",
-    city: "Lahore",
-    address: "Earth",
-  },
-];
 
 let cols = ["Sr", "Name", "Email", "Designation", "Country", "City", "Address"];
 
 const Page: NextPage<Props> = ({}) => {
+  const { list } = useContext(ListContext);
+  console.log(list);
   return (
     <div>
       <Table cols={cols}>
-        {record?.map((r, index) => (
+        {list?.map((r, index) => (
           <tr key={index}>
             <td className="px-6 py-4 text-sm font-medium text-white-100">
-              {index}
+              {index + 1}
             </td>
             <td className="px-6 py-4 text-sm font-medium text-white-10">
               {r.name}
