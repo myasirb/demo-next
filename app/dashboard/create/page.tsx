@@ -5,7 +5,7 @@ interface Props {}
 
 const Page: NextPage<Props> = ({}) => {
   return (
-    <div className="m-10">
+    <div>
       <EmployeeForm />
     </div>
   );

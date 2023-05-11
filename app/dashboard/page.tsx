@@ -3,7 +3,7 @@ import Table from "./Table";
 
 interface Props {}
 
-let record = [
+export let record = [
   {
     name: "Muhammad Yasir",
     email: "muhammadyasir@folio3.com",

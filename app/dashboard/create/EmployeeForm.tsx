@@ -1,20 +1,37 @@
-/*
-  This EmployeeForm requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
-import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
+"use client";
+
+import { useState } from "react";
+import { record } from "../page";
 
 export default function EmployeeForm() {
+  const [email, setEmail] = useState("");
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [designation, setDesignation] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  const [address, setAddress] = useState("");
+
+  const formSubmitHandler = () => {
+    record.push({
+      name: fname + " " + lname,
+      email: email + "@folio3.com",
+      designation,
+      country,
+      city,
+      address,
+    });
+  };
+
+  const formCancelHandler = () => {
+    setFname("");
+    setLname("");
+    setCity("");
+    setCountry("");
+    setAddress("");
+    setDesignation("");
+  };
+
   return (
     <form>
       <div className="space-y-12 x-15">
@@ -38,6 +55,8 @@ export default function EmployeeForm() {
               <div className="mt-2">
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                   <input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     type="text"
                     name="username"
                     id="username"
@@ -72,6 +91,8 @@ export default function EmployeeForm() {
               </label>
               <div className="mt-2">
                 <input
+                  value={fname}
+                  onChange={(e) => setFname(e.target.value)}
                   type="text"
                   name="first-name"
                   id="first-name"
@@ -90,6 +111,8 @@ export default function EmployeeForm() {
               </label>
               <div className="mt-2">
                 <input
+                  value={lname}
+                  onChange={(e) => setLname(e.target.value)}
                   type="text"
                   name="last-name"
                   id="last-name"
@@ -107,9 +130,11 @@ export default function EmployeeForm() {
               </label>
               <div className="mt-2">
                 <input
+                  value={designation}
+                  onChange={(e) => setDesignation(e.target.value)}
                   type="text"
                   name="first-name"
-                  id="first-name"
+                  id="designation"
                   autoComplete="given-name"
                   className="bg-black block w-full rounded-md border-0 py-1.5 text-white-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-white-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -124,14 +149,16 @@ export default function EmployeeForm() {
               </label>
               <div className="mt-2">
                 <select
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
                   id="country"
                   name="country"
                   autoComplete="country-name"
                   className="bg-black block w-full rounded-md border-0 py-1.5 text-white-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
-                  <option>Pakistan</option>
-                  <option>Dubai</option>
-                  <option>Mexico</option>
+                  <option value="pakistan">Pakistan</option>
+                  <option value="dubai">Dubai</option>
+                  <option value="mexico">Mexico</option>
                 </select>
               </div>
             </div>
@@ -144,14 +171,16 @@ export default function EmployeeForm() {
               </label>
               <div className="mt-2">
                 <select
-                  id="country"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  id="city"
                   name="country"
                   autoComplete="country-name"
                   className="bg-black block w-full rounded-md border-0 py-1.5 text-white-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
-                  <option>Lahore</option>
-                  <option>Karachi</option>
-                  <option>Islamabad</option>
+                  <option value="lahore">Lahore</option>
+                  <option value="karachi">Karachi</option>
+                  <option value="islamabad">Islamabad</option>
                 </select>
               </div>
             </div>
@@ -165,6 +194,8 @@ export default function EmployeeForm() {
               </label>
               <div className="mt-2">
                 <input
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
                   type="text"
                   name="street-address"
                   id="street-address"
@@ -179,13 +210,15 @@ export default function EmployeeForm() {
 
       <div className="mt-6 flex items-center justify-end gap-x-6">
         <button
+          onClick={formCancelHandler}
           type="button"
           className="text-sm font-semibold leading-6 text-white-900"
         >
           Cancel
         </button>
         <button
-          type="submit"
+          onClick={formSubmitHandler}
+          type="button"
           className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Save
