@@ -33,6 +33,7 @@ export default function EmployeeForm() {
     setCountry("");
     setAddress("");
     setDesignation("");
+    setEmail("");
   };
 
   return (
