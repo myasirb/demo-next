@@ -9,13 +9,13 @@ import Avatar from "../public/temp-profile.png";
 import Image from "next/image";
 
 const navigation = [
-  { name: "Home", href: "/", current: true },
+  { name: "Home", href: "/", current: false },
   { name: "Dashboard", href: "/dashboard", current: false },
   { name: "Projects", href: "/projects", current: false },
   { name: "Calendar", href: "/calendar", current: false },
 ];
 
-function classNames(...classes: any) {
+export function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
