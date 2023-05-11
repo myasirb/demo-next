@@ -13,8 +13,9 @@ export default function Table({
             <table className="min-w-full divide-y divide-white-200">
               <thead className="bg-gray-50">
                 <tr>
-                  {cols?.map((c) => (
+                  {cols?.map((c, index) => (
                     <th
+                      key={index}
                       scope="col"
                       className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase"
                     >
