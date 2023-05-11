@@ -11,7 +11,7 @@ let cols = ["Sr", "Name", "Email", "Designation", "Country", "City", "Address"];
 
 const Page: NextPage<Props> = ({}) => {
   const { list } = useContext(ListContext);
-  console.log(list);
+
   return (
     <div>
       <Table cols={cols}>
